@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV Interaktif - Muhammad Daffa Alwansyah</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Visualization & Content Choices: 
+        - Ringkasan Profesional: Text block (Goal: Inform).
+        - Linimasa Karir: Visually structured HTML list (Goal: Show Change/Progression).
+        - Portofolio Proyek SAP: Filterable HTML cards for individual projects (Goal: Organize, Compare, Inform), Chart.js bar chart for project type distribution (Goal: Compare, Inform). Interaction: Clickable filters update card display and potentially chart. Justification: Allows users to quickly find relevant project experience from a long list.
+        - Keahlian Inti: Chart.js doughnut chart (Goal: Show Proportion/Inform). Justification: Provides a quick visual summary of key skill areas.
+        - Sertifikasi: Styled HTML list (Goal: Inform).
+        - Pendidikan: Text block (Goal: Inform).
+        - All charts are Canvas-based via Chart.js. No SVG/Mermaid used. This approach prioritizes interactivity and visual summarization of key CV aspects.
+    -->
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; /* slate-50 */ }
+        .sticky-nav { position: -webkit-sticky; position: sticky; top: 0; z-index: 50; }
+        .section-title { border-bottom: 2px solid #0369a1; /* sky-700 */ padding-bottom: 0.5rem; }
+        .chart-container { position: relative; width: 100%; max-width: 500px; margin-left: auto; margin-right: auto; height: 300px; max-height: 350px; }
+        @media (min-width: 768px) { .chart-container { height: 350px; max-height: 400px; } }
+        .project-card { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .project-card:hover { transform: translateY(-5px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05); }
+        .filter-button.active { background-color: #0369a1; /* sky-700 */ color: white; }
+        .filter-button { background-color: white; color: #334155; /* slate-700 */ }
+        html { scroll-behavior: smooth; }
+        .nav-link.active { color: #fbbf24; /* amber-400 */ font-weight: bold; }
+    </style>
+</head>
+<body class="text-slate-800">
+
+    <header class="bg-sky-700 text-white p-6 shadow-md">
+        <div class="container mx-auto max-w-5xl text-center">
+            <h1 class="text-4xl font-bold">Muhammad Daffa Alwansyah</h1>
+            <p class="text-xl mt-2 text-sky-100">SAP BASIS Consultant & Cloud Architect</p>
+            <div class="mt-4 flex justify-center space-x-4">
+                <a href="mailto:alwansyah.al888@gmail.com" class="hover:text-amber-400" title="Email">📧 Email</a>
+                <a href="https://linkedin.com/in/daffaalwansyah" target="_blank" rel="noopener noreferrer" class="hover:text-amber-400" title="LinkedIn">🔗 LinkedIn</a>
+                <a href="tel:+6282338080174" class="hover:text-amber-400" title="Telepon">📞 Telepon</a>
+            </div>
+        </div>
+    </header>
+
+    <nav id="mainNav" class="sticky-nav bg-sky-600 text-white shadow-lg">
+        <div class="container mx-auto max-w-5xl">
+            <ul class="flex justify-center space-x-2 sm:space-x-4 py-3 px-2 overflow-x-auto">
+                <li><a href="#ringkasan" class="nav-link hover:text-amber-300 px-2 py-2 sm:px-3 rounded-md text-sm font-medium">Ringkasan</a></li>
+                <li><a href="#karir" class="nav-link hover:text-amber-300 px-2 py-2 sm:px-3 rounded-md text-sm font-medium">Linimasa Karir</a></li>
+                <li><a href="#proyek" class="nav-link hover:text-amber-300 px-2 py-2 sm:px-3 rounded-md text-sm font-medium">Proyek SAP</a></li>
+                <li><a href="#keahlian" class="nav-link hover:text-amber-300 px-2 py-2 sm:px-3 rounded-md text-sm font-medium">Keahlian & Sertifikasi</a></li>
+                <li><a href="#pendidikan" class="nav-link hover:text-amber-300 px-2 py-2 sm:px-3 rounded-md text-sm font-medium">Pendidikan</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container mx-auto max-w-5xl p-4 sm:p-6 lg:p-8 space-y-16">
+
+        <section id="ringkasan" class="pt-12 -mt-12">
+            <h2 class="text-3xl font-bold text-sky-700 mb-6 section-title">Ringkasan Profesional</h2>
+            <p class="text-lg leading-relaxed text-slate-700">
+                SAP BASIS Consultant yang sangat termotivasi dengan lebih dari 6 tahun pengalaman dalam mengoptimalkan kinerja sistem, memastikan stabilitas, dan menerapkan konfigurasi aman untuk berbagai lingkungan SAP. Rekam jejak terbukti dalam mengelola siklus penuh tugas SAP Basis, termasuk instalasi, peningkatan, migrasi (Greenfield & Brownfield), dan pemeliharaan berkelanjutan. Memiliki keahlian mendalam dalam komponen SAP Basis, manajemen pengguna, kontrol otorisasi, pemantauan sistem, penyesuaian kinerja, dan prosedur pemulihan bencana. Mahir dalam memecahkan masalah teknis yang kompleks dan berkolaborasi secara efektif dalam tim proyek untuk memberikan implementasi dan transformasi SAP yang sukses bagi klien tingkat perusahaan di berbagai industri, termasuk inisiatif RISE with SAP yang kompleks.
+            </p>
+            <div class="mt-6">
+                <h3 class="text-xl font-semibold text-sky-600 mb-3">Kata Kunci Keahlian Utama:</h3>
+                <div id="keywordsContainer" class="flex flex-wrap gap-2">
+                    <span class="bg-sky-100 text-sky-800 px-3 py-1.5 rounded-full text-sm shadow-sm">SAP BASIS</span>
+                    <span class="bg-sky-100 text-sky-800 px-3 py-1.5 rounded-full text-sm shadow-sm">S/4HANA</span>
+                    <span class="bg-sky-100 text-sky-800 px-3 py-1.5 rounded-full text-sm shadow-sm">RISE with SAP</span>
+                    <span class="bg-sky-100 text-sky-800 px-3 py-1.5 rounded-full text-sm shadow-sm">Cloud Architecture (PCA)</span>
+                    <span class="bg-sky-100 text-sky-800 px-3 py-1.5 rounded-full text-sm shadow-sm">System Migration & Conversion</span>
+                    <span class="bg-sky-100 text-sky-800 px-3 py-1.5 rounded-full text-sm shadow-sm">Performance Tuning</span>
+                    <span class="bg-sky-100 text-sky-800 px-3 py-1.5 rounded-full text-sm shadow-sm">Disaster Recovery Planning</span>
+                    <span class="bg-sky-100 text-sky-800 px-3 py-1.5 rounded-full text-sm shadow-sm">SAP Fiori Administration</span>
+                    <span class="bg-sky-100 text-sky-800 px-3 py-1.5 rounded-full text-sm shadow-sm">SAP HANA Administration</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="karir" class="pt-12 -mt-12">
+            <h2 class="text-3xl font-bold text-sky-700 mb-8 section-title">Linimasa Karir</h2>
+             <p class="mb-8 text-slate-700">Berikut adalah perjalanan karir saya, menyoroti peran dan tanggung jawab utama di setiap posisi. Pengalaman ini membentuk keahlian saya saat ini dalam konsultasi SAP dan arsitektur cloud.</p>
+            <div id="workHistoryContainer" class="space-y-8 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-slate-300 before:to-transparent">
+            </div>
+        </section>
+
+        <section id="proyek" class="pt-12 -mt-12">
+            <h2 class="text-3xl font-bold text-sky-700 mb-6 section-title">Portofolio Proyek SAP</h2>
+            <p class="mb-8 text-slate-700">Jelajahi berbagai proyek SAP yang telah saya pimpin dan kontribusikan. Gunakan filter di bawah untuk menyaring proyek berdasarkan jenis atau peran spesifik Anda untuk menemukan contoh yang paling relevan dengan kebutuhan Anda.</p>
+            <div class="mb-8 space-y-6 bg-white p-6 rounded-lg shadow">
+                <div>
+                    <label for="projectTypeFilter" class="block font-semibold mb-2 text-slate-600">Filter berdasarkan Jenis Proyek:</label>
+                    <select id="projectTypeFilter" class="w-full p-2 border border-slate-300 rounded-md shadow-sm focus:ring-sky-500 focus:border-sky-500">
+                    </select>
+                </div>
+                <div>
+                    <label for="projectRoleFilter" class="block font-semibold mb-2 text-slate-600">Filter berdasarkan Peran:</label>
+                    <select id="projectRoleFilter" class="w-full p-2 border border-slate-300 rounded-md shadow-sm focus:ring-sky-500 focus:border-sky-500">
+                    </select>
+                </div>
+            </div>
+            <div id="projectGrid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            </div>
+            <div class="mt-12">
+                <h3 class="text-2xl font-semibold text-sky-600 mb-4 text-center">Distribusi Jenis Proyek</h3>
+                <p class="text-center text-slate-600 mb-4">Grafik ini menunjukkan variasi jenis proyek yang telah saya tangani, memberikan gambaran luasnya spektrum pengalaman implementasi SAP saya.</p>
+                <div class="chart-container bg-white p-4 rounded-lg shadow">
+                    <canvas id="projectTypesChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section id="keahlian" class="pt-12 -mt-12">
+            <h2 class="text-3xl font-bold text-sky-700 mb-8 section-title">Keahlian Inti & Sertifikasi</h2>
+            <p class="mb-8 text-slate-700">Bagian ini merangkum keahlian teknis dan fungsional utama saya, didukung oleh sertifikasi industri yang relevan. Ini menunjukkan komitmen saya terhadap pengembangan profesional berkelanjutan dan penguasaan teknologi SAP.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <div>
+                    <h3 class="text-2xl font-semibold text-sky-600 mb-4">Distribusi Keahlian Utama</h3>
+                     <p class="mb-4 text-slate-600">Visualisasi ini mengilustrasikan area fokus utama dari keahlian saya, berdasarkan akumulasi pengalaman dari berbagai proyek dan peran.</p>
+                    <div class="chart-container bg-white p-4 rounded-lg shadow">
+                        <canvas id="skillsDistributionChart"></canvas>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-semibold text-sky-600 mb-4">Sertifikasi Profesional</h3>
+                    <ul id="certificationList" class="space-y-3">
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="pendidikan" class="pt-12 -mt-12">
+            <h2 class="text-3xl font-bold text-sky-700 mb-6 section-title">Latar Belakang Pendidikan</h2>
+            <p class="mb-6 text-slate-700">Dasar akademis saya dalam Informatika memberikan landasan yang kuat untuk peran teknis dan analitis dalam karir saya di bidang teknologi informasi dan konsultasi SAP.</p>
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold text-sky-800">Sarjana Ilmu Komputer (S.Kom) - Informatika</h3>
+                <p class="text-slate-700">Universitas Nasional, Jakarta, Indonesia</p>
+                <p class="text-sm text-slate-500">September 2020 – Maret 2024</p>
+                <p class="mt-2"><span class="font-semibold text-amber-600">Predikat: Cum Laude</span> | IPK: 3.93 / 4.00</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-slate-800 text-slate-300 text-center p-8 mt-16">
+        <p>&copy; <span id="currentYear"></span> Muhammad Daffa Alwansyah. Semua hak dilindungi.</p>
+        <p class="text-sm mt-1">Dirancang untuk kemudahan eksplorasi.</p>
+    </footer>
+
+    <script>
+        const cvData = {
+            workHistory: [
+                { company: "PT. IBM Delivery Indonesia - Jakarta", role: "SAP BASIS Consultant", dates: "05/2025 – Saat ini", description: ["Melanjutkan tanggung jawab utama dan keterlibatan proyek sebagai Konsultan SAP BASIS setelah akuisisi PT Equine Global oleh IBM."] },
+                { company: "PT. Equine Global - Jakarta", role: "SAP BASIS Consultant", dates: "10/2021 – 04/2025", description: ["Memimpin tim SAP Basis dalam proyek greenfield dan brownfield, mengawasi desain sistem, implementasi, migrasi, dan proses konversi.", "Menetapkan dan memberlakukan standar, persyaratan, dan praktik terbaik SAP Basis.", "Mengevaluasi, mengarahkan, dan mengimplementasikan peningkatan untuk pemantauan kinerja optimal dan konfigurasi sistem yang tangguh.", "Memberikan dukungan teknis ahli dan pemecahan masalah untuk isu sistem SAP Basis yang kompleks."] },
+                { company: "PT. Equine Global - Jakarta", role: "SAP Partner Cloud Architect (PCA)", dates: "11/2022 – 04/2025 (Peran Bersamaan)", description: ["Merancang solusi arsitektur cloud, jaringan, dan integrasi SAP yang komprehensif untuk berbagai implementasi RISE with SAP.", "Mendefinisikan lingkungan cloud optimal (Private dan Public Cloud editions), memastikan keamanan, skalabilitas, dan integrasi tanpa batas dengan lanskap SAP yang ada dan layanan BTP.", "Berkolaborasi dengan klien dan tim teknis untuk menerjemahkan kebutuhan bisnis menjadi arsitektur cloud SAP yang tangguh dan siap untuk masa depan."] },
+                { company: "PT. Sinergi Informatika Semen Indonesia – Jakarta", role: "SAP BASIS Administrator", dates: "06/2019 – 09/2021", description: ["Mengelola instalasi sistem SAP, peningkatan, dan melakukan pemeliharaan berkelanjutan untuk memastikan ketersediaan tinggi dan integritas sistem.", "Memantau kinerja sistem secara proaktif, mengidentifikasi dan menerapkan langkah-langkah optimalisasi untuk meningkatkan efisiensi.", "Mengelola akses pengguna, menerapkan protokol keamanan, dan mengelola backup data reguler serta rencana pemulihan.", "Memberikan pemecahan masalah dan dukungan penting, menjaga lingkungan SAP yang stabil dan andal untuk operasi bisnis."] },
+                { company: "PT. Sinergi Informatika Semen Indonesia – Jakarta", role: "Full-stack Web Developer", dates: "03/2019 – 07/2019", description: ["Merancang dan mengembangkan komponen web front-end dan back-end yang menghadap pengguna menggunakan HTML, CSS, PHP, dan kerangka kerja JavaScript."] }
+            ],
+            projects: [
+                { client: "PT Eka Bogainti (Hoka-Hoka Bento)", dates: "03/2024 – 03/2025", type: "RISE With SAP Private Cloud Implementation", s4Version: "S/4HANA 2023", role: "SAP Partner Cloud Architect (PCA) & SAP BASIS Consultant Lead", responsibilities: "Memimpin tim BASIS dalam implementasi RISE with SAP S/4HANA Private Cloud, termasuk Embedded SAP Fiori dan integrasi dengan SAP BTP Integration Suites. Merancang solusi cloud, dan memastikan kelancaran pelaksanaan teknis." },
+                { client: "PT Bandara Internasional Batam", dates: "02/2024 – 11/2024", type: "GROW With SAP Public Cloud Implementation", s4Version: "SAP S/4HANA CLOUD 2402", role: "SAP BASIS Consultant Lead", responsibilities: "Memimpin tim BASIS dalam implementasi SAP S/4HANA Public Cloud, meliputi penyediaan SAP CBC, SAP ALM, dan SAP S/4HANA Cloud environments." },
+                { client: "PT Kereta Cepat Indonesia China", dates: "03/2024 – 08/2024", type: "RISE With SAP Private Cloud Implementation", s4Version: "S/4HANA 2023 FPS 01", role: "SAP Partner Cloud Architect (PCA)", responsibilities: "Merancang lingkungan RISE with SAP S/4HANA Private Cloud, berfokus pada desain infrastruktur yang aman dan skalabel serta strategi integrasi." },
+                { client: "PT Jumbo Power International", dates: "03/2024 – 12/2024", type: "RISE With SAP Private Cloud Implementation", s4Version: "S/4HANA 2023", role: "SAP Partner Cloud Architect (PCA)", responsibilities: "Merancang lingkungan RISE with SAP S/4HANA Private Cloud, berfokus pada desain infrastruktur yang aman dan skalabel serta strategi integrasi." },
+                { client: "PT Asuransi Tugu Pratama Indonesia Tbk", dates: "11/2022 – 03/2024", type: "RISE With SAP Private Cloud Implementation", s4Version: "S/4HANA 2022 FPS 01", role: "SAP Partner Cloud Architect (PCA) & SAP BASIS Consultant Lead", responsibilities: "Memimpin tim BASIS dan merancang solusi untuk implementasi RISE with SAP S/4HANA Private Cloud, termasuk Embedded SAP Fiori dan integrasi dengan SAP BTP Integration Suites." },
+                { client: "PT Asia Pacific Fibers Tbk", dates: "02/2023 – 02/2023", type: "SAP BASIS Training", s4Version: "-", role: "SAP BASIS Consultant as Trainer", responsibilities: "Memberikan pelatihan SAP BASIS yang komprehensif kepada personel klien." },
+                { client: "PT Jasa Marga Tbk", dates: "01/2023 – 01/2025", type: "SAP Managed Services", s4Version: "-", role: "SAP BASIS Consultant", responsibilities: "Memberikan administrasi dan dukungan SAP Basis berkelanjutan." },
+                { client: "PT Cikarang Listrindo Tbk", dates: "01/2023 – 01/2025", type: "SAP Managed Services", s4Version: "-", role: "SAP BASIS Consultant", responsibilities: "Memberikan administrasi dan dukungan SAP Basis berkelanjutan." },
+                { client: "PT FKS Pangan Nusantara", dates: "12/2022 – 12/2024", type: "SAP Managed Services", s4Version: "-", role: "SAP BASIS Consultant", responsibilities: "Memberikan administrasi dan dukungan SAP Basis berkelanjutan." },
+                { client: "PT Surya Citra Media Tbk", dates: "09/2022 – 03/2023", type: "SAP Greenfield Implementation", s4Version: "S/4HANA 2021 FPS 02", role: "SAP BASIS Consultant Lead", responsibilities: "Memimpin tim BASIS dalam implementasi greenfield SAP S/4HANA On-premise dengan Embedded SAP Fiori." },
+                { client: "PT Paradise Perkasa", dates: "01/2022 – 09/2022", type: "SAP Brownfield Migration and Conversion", s4Version: "ECC 6.0 EHP 7 to S/4HANA 2020 SPS 03", role: "SAP BASIS Consultant Lead", responsibilities: "Memimpin upaya tim BASIS untuk proyek migrasi dan konversi dari SAP ECC6 ke SAP S/4HANA On-premise, termasuk pengaturan Fiori." },
+                { client: "PT Mineral Industri Indonesia (Persero) MIND ID", dates: "12/2021 – 12/2022", type: "DRP & DRC Implementation", s4Version: "S/4HANA", role: "SAP BASIS Consultant Lead", responsibilities: "Memimpin desain dan implementasi Perencanaan Pemulihan Bencana (DRP) dan Pusat Pemulihan Bencana (DRC) untuk lingkungan S/4HANA." },
+                { client: "PT TASPEN (Persero)", dates: "01/2022 – 01/2025", type: "SAP Managed Services", s4Version: "-", role: "SAP BASIS Consultant", responsibilities: "Memberikan dukungan SAP Basis komprehensif dan layanan pemeliharaan." },
+                { client: "Perum LPPNPI (AirNav Indonesia)", dates: "10/2021 – 10/2025", type: "SAP Managed Services", s4Version: "-", role: "SAP BASIS Consultant", responsibilities: "Memastikan kelancaran operasi sistem SAP melalui layanan terkelola khusus." },
+                { client: "PT Angkasa Pura II (Persero)", dates: "01/2024 – 12/2025", type: "SAP Managed Services", s4Version: "-", role: "SAP BASIS Consultant", responsibilities: "Memberikan administrasi dan dukungan SAP Basis berkelanjutan." },
+                { client: "PT Angkasa Pura I (Persero)", dates: "10/2021 – 10/2022", type: "SAP Managed Services", s4Version: "-", role: "SAP BASIS Consultant", responsibilities: "Memberikan administrasi dan dukungan SAP Basis berkelanjutan." },
+                { client: "PT Semen Indonesia Tbk", dates: "06/2021 – 07/2021", type: "SAP Migration", s4Version: "SAP ECC 6.0", role: "SAP BASIS Administrator", responsibilities: "Mendukung aktivitas SAP Basis untuk proyek migrasi SAP ECC 6.0." },
+                { client: "PT Semen Indonesia Tbk", dates: "10/2019 – 04/2020", type: "SAP Integrated Business Planning Implementation", s4Version: "SAP IBP", role: "SAP BASIS Administrator", responsibilities: "Mendukung aktivitas SAP Basis untuk implementasi SAP IBP." },
+                { client: "PT Semen Indonesia Tbk", dates: "10/2019 – 09/2021", type: "SAP Managed Services", s4Version: "-", role: "SAP BASIS Administrator", responsibilities: "Memberikan administrasi dan dukungan SAP Basis berkelanjutan untuk berbagai sistem." },
+                { client: "PT Solusi Bangun Indonesia Tbk", dates: "10/2019 – 09/2021", type: "SAP Managed Services", s4Version: "-", role: "SAP BASIS Administrator", responsibilities: "Memberikan administrasi dan dukungan SAP Basis berkelanjutan untuk berbagai sistem." },
+                { client: "PT Solusi Bangun Indonesia Tbk", dates: "07/2019 – 10/2019", type: "SAP Migration", s4Version: "SAP ECC 6.0", role: "SAP BASIS Administrator", responsibilities: "Mendukung aktivitas SAP Basis untuk proyek migrasi SAP ECC 6.0." }
+            ],
+            certifications: [
+                { name: "SAP Certified Specialist - SAP S/4HANA Conversion and SAP System Upgrade", date: "03/2025", issuer: "SAP" },
+                { name: "SAP Certified Associate - Database Administrator - SAP HANA", date: "03/2025", issuer: "SAP" },
+                { name: "SAP Certified Associate - Implementation Consultant - SAP S4HANA Cloud Public Edition", date: "03/2025", issuer: "SAP" },
+                { name: "SAP Certified Associate - SAP S/4HANA System Administration", date: "09/2024", issuer: "SAP" },
+                { name: "SAP Certified Associate - SAP Fiori System Administration", date: "09/2024", issuer: "SAP" },
+                { name: "Indonesia Professional Certification Agency - Junior Network Administrator", date: "12/2023", issuer: "BNSP" },
+                { name: "Advisory Skills - RISE with SAP S/4HANA Cloud Private Edition - Cloud Architecture", date: "06/2023", issuer: "SAP" },
+                { name: "SAP Certified Technology Specialist - SAP S/4HANA Conversion and SAP System Upgrade 2022", date: "05/2023", issuer: "SAP" },
+                { name: "SAP Certified Application Associate - SAP S/4HANA Cloud (public) Implementation with SAP Activate", date: "10/2022", issuer: "SAP" },
+                { name: "SAP Certified Technology Associate - SAP HANA 2.0 SPS05", date: "10/2022", issuer: "SAP" },
+                { name: "HCIA - Cloud Service", date: "11/2021", issuer: "Huawei" }
+            ],
+            skillsDistribution: {
+                labels: ["SAP Basis & Sistem Inti", "Arsitektur Cloud & Integrasi", "Manajemen Proyek & Konsultasi", "Administrasi HANA & Fiori", "Pengembangan Web"],
+                data: [40, 25, 20, 10, 5],
+                colors: ['#0ea5e9', '#38bdf8', '#7dd3fc', '#bae6fd', '#e0f2fe']
+            }
+        };
+
+        document.addEventListener('DOMContentLoaded', () => {
+            populateWorkHistory();
+            initializeProjectFilters();
+            renderProjects(cvData.projects);
+            renderProjectTypesChart(cvData.projects);
+            renderSkillsDistributionChart();
+            populateCertifications();
+            setupNavigation();
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+        });
+
+        function populateWorkHistory() {
+            const container = document.getElementById('workHistoryContainer');
+            container.innerHTML = '';
+            cvData.workHistory.forEach((item, index) => {
+                const alignmentClass = index % 2 === 0 ? 'md:mr-auto' : 'md:ml-auto';
+                const descriptionHTML = item.description.map(d => `<li class="text-slate-600">${d}</li>`).join('');
+                const html = `
+                    <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                        <div class="flex items-center justify-center w-10 h-10 rounded-full border-2 border-white bg-sky-500 text-white shadow-md shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
+                            <span class="text-lg font-semibold">${cvData.workHistory.length - index}</span>
+                        </div>
+                        <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-4 rounded-lg border border-slate-200 shadow-lg ${alignmentClass}">
+                            <div class="flex items-start justify-between space-x-2 mb-1">
+                                <h3 class="font-bold text-sky-700 text-md sm:text-lg">${item.role}</h3>
+                                <time class="font-medium text-amber-600 text-xs sm:text-sm whitespace-nowrap">${item.dates}</time>
+                            </div>
+                            <p class="text-sm sm:text-md font-semibold text-slate-600 mb-2">${item.company}</p>
+                            <ul class="list-disc list-inside space-y-1 text-xs sm:text-sm">${descriptionHTML}</ul>
+                        </div>
+                    </div>
+                `;
+                container.innerHTML += html;
+            });
+        }
+        
+        function initializeProjectFilters() {
+            const typeFilterSelect = document.getElementById('projectTypeFilter');
+            const roleFilterSelect = document.getElementById('projectRoleFilter');
+
+            const uniqueTypes = ['Semua Jenis Proyek', ...new Set(cvData.projects.map(p => p.type))];
+            uniqueTypes.forEach(type => {
+                const option = document.createElement('option');
+                option.value = type === 'Semua Jenis Proyek' ? 'all' : type;
+                option.textContent = type;
+                typeFilterSelect.appendChild(option);
+            });
+
+            const uniqueRoles = ['Semua Peran', ...new Set(cvData.projects.map(p => p.role))];
+            uniqueRoles.forEach(role => {
+                const option = document.createElement('option');
+                option.value = role === 'Semua Peran' ? 'all' : role;
+                option.textContent = role;
+                roleFilterSelect.appendChild(option);
+            });
+
+            typeFilterSelect.addEventListener('change', filterProjects);
+            roleFilterSelect.addEventListener('change', filterProjects);
+        }
+
+        function filterProjects() {
+            const selectedType = document.getElementById('projectTypeFilter').value;
+            const selectedRole = document.getElementById('projectRoleFilter').value;
+
+            const filteredProjects = cvData.projects.filter(project => {
+                const typeMatch = selectedType === 'all' || project.type === selectedType;
+                const roleMatch = selectedRole === 'all' || project.role === selectedRole;
+                return typeMatch && roleMatch;
+            });
+            renderProjects(filteredProjects);
+        }
+
+        function renderProjects(projectsToRender) {
+            const grid = document.getElementById('projectGrid');
+            grid.innerHTML = '';
+            if (projectsToRender.length === 0) {
+                grid.innerHTML = `<p class="col-span-full text-center text-slate-500 py-8">Tidak ada proyek yang sesuai dengan filter yang dipilih.</p>`;
+                return;
+            }
+            projectsToRender.forEach(project => {
+                const card = `
+                    <div class="project-card bg-white p-5 rounded-lg shadow-lg border border-slate-200 flex flex-col justify-between hover:shadow-sky-100">
+                        <div>
+                            <h4 class="text-md sm:text-lg font-bold text-sky-700">${project.client}</h4>
+                            <p class="text-xs text-amber-600 font-medium mb-1">${project.dates}</p>
+                            <p class="text-xs sm:text-sm text-slate-600 mb-1"><span class="font-semibold">Jenis:</span> ${project.type} (${project.s4Version})</p>
+                            <p class="text-xs sm:text-sm text-slate-600 mb-2"><span class="font-semibold">Peran:</span> ${project.role}</p>
+                            <p class="text-xs sm:text-sm text-slate-700 leading-relaxed mb-3">${project.responsibilities}</p>
+                        </div>
+                    </div>
+                `;
+                grid.innerHTML += card;
+            });
+        }
+        
+        let projectTypesChartInstance = null;
+        function renderProjectTypesChart(projectsForChart) {
+            const ctx = document.getElementById('projectTypesChart').getContext('2d');
+            const projectCounts = {};
+            projectsForChart.forEach(p => {
+                projectCounts[p.type] = (projectCounts[p.type] || 0) + 1;
+            });
+
+            if (projectTypesChartInstance) {
+                projectTypesChartInstance.destroy();
+            }
+
+            projectTypesChartInstance = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: Object.keys(projectCounts),
+                    datasets: [{
+                        label: 'Jumlah Proyek',
+                        data: Object.values(projectCounts),
+                        backgroundColor: 'rgba(56, 189, 248, 0.7)', // sky-400 with opacity
+                        borderColor: '#0284c7', // sky-600
+                        borderWidth: 1,
+                        borderRadius: 4,
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: { 
+                            beginAtZero: true, 
+                            ticks: { 
+                                stepSize: 1, 
+                                color: '#475569' // slate-600
+                            },
+                            grid: { color: '#e2e8f0' /* slate-200 */ }
+                        },
+                        x: {
+                            ticks: { 
+                                color: '#475569', // slate-600
+                                font: { size: 10 }
+                            },
+                             grid: { display: false }
+                        }
+                    },
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            backgroundColor: '#0f172a', // slate-900
+                            titleColor: '#f1f5f9', // slate-100
+                            bodyColor: '#e2e8f0', // slate-200
+                            callbacks: {
+                                label: function(context) { return ` ${context.dataset.label}: ${context.parsed.y}`; }
+                            }
+                        }
+                    },
+                    animation: {
+                        duration: 800,
+                        easing: 'easeInOutQuart'
+                    }
+                }
+            });
+        }
+        
+        let skillsChartInstance = null;
+        function renderSkillsDistributionChart() {
+            const ctx = document.getElementById('skillsDistributionChart').getContext('2d');
+            if (skillsChartInstance) {
+                skillsChartInstance.destroy();
+            }
+            skillsChartInstance = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: cvData.skillsDistribution.labels,
+                    datasets: [{
+                        label: 'Distribusi Keahlian',
+                        data: cvData.skillsDistribution.data,
+                        backgroundColor: cvData.skillsDistribution.colors,
+                        borderColor: '#ffffff',
+                        borderWidth: 2,
+                        hoverOffset: 8
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { 
+                            position: 'bottom', 
+                            labels: { padding: 15, font: {size: 10}, color: '#475569' /* slate-600 */ }
+                        },
+                        tooltip: {
+                            backgroundColor: '#0f172a',
+                            titleColor: '#f1f5f9',
+                            bodyColor: '#e2e8f0',
+                            callbacks: {
+                                label: function(context) {
+                                    let label = context.label || '';
+                                    if (label) { label += ': '; }
+                                    if (context.parsed !== null) { label += context.parsed + '%'; }
+                                    return label;
+                                }
+                            }
+                        }
+                    },
+                    animation: {
+                        animateRotate: true,
+                        animateScale: true,
+                        duration: 1000
+                    }
+                }
+            });
+        }
+
+        function populateCertifications() {
+            const list = document.getElementById('certificationList');
+            list.innerHTML = '';
+            cvData.certifications.forEach(cert => {
+                const item = `
+                    <li class="bg-white p-4 rounded-md shadow-sm border border-slate-200 hover:shadow-md transition-shadow">
+                        <h4 class="font-semibold text-sky-700 text-sm sm:text-base">${cert.name}</h4>
+                        <p class="text-xs sm:text-sm text-slate-600">Diterbitkan oleh: ${cert.issuer} | Tanggal: ${cert.date}</p>
+                    </li>
+                `;
+                list.innerHTML += item;
+            });
+        }
+
+        function setupNavigation() {
+            const navLinks = document.querySelectorAll('#mainNav .nav-link');
+            const sections = document.querySelectorAll('main > section');
+            const navHeight = document.getElementById('mainNav').offsetHeight;
+
+            function changeActiveLink() {
+                let index = sections.length;
+                while(--index && window.scrollY + navHeight + 50 < sections[index].offsetTop) {}
+                
+                navLinks.forEach((link) => link.classList.remove('active'));
+                if (index >= 0 && navLinks[index]) {
+                     navLinks[index].classList.add('active');
+                }
+            }
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        const elementPosition = targetElement.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - navHeight;
+            
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: "smooth"
+                        });
+                    }
+                });
+            });
+
+            window.addEventListener('scroll', changeActiveLink);
+            changeActiveLink(); // Initial call to set active link on page load
+        }
+
+    </script>
+</body>
+</html>
