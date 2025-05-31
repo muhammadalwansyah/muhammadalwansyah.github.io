@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curriculum Vitae Muhammad Daffa Alwansyah</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f3f4f6; /* gray-100 */ }
+        .tab-button { transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease; }
+        .tab-button.active { background-color: #0891b2; /* cyan-600 */ color: white; border-color: #0891b2; /* cyan-600 */ box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); }
+        .tab-button:not(.active) { background-color: white; color: #374151; /* gray-700 */ border-color: #d1d5db; /* gray-300 */ }
+        .tab-button:not(.active):hover { background-color: #e0f2f7; /* cyan-50 */ color: #0e7490; /* cyan-700 */ border-color: #a5f3fc; /* cyan-200 */ }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; animation: fadeIn 0.5s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .section-title-tab { border-bottom: 2px solid #0891b2; /* cyan-600 */ padding-bottom: 0.5rem; margin-bottom: 1.5rem; }
+        .chart-container { position: relative; width: 100%; max-width: 450px; margin-left: auto; margin-right: auto; }
+        #skillsDistributionChartContainer { height: 300px; max-height: 350px; } /* Increased height for skills chart */
+        #projectTypesChartContainer { height: 280px; max-height: 320px; }
+
+        @media (min-width: 768px) { 
+            #skillsDistributionChartContainer { height: 340px; max-height: 380px; } /* Increased height for skills chart */
+            #projectTypesChartContainer { height: 320px; max-height: 350px; }
+        }
+        .project-card { transition: transform 0.2s ease, box-shadow 0.2s ease; border: 1px solid #e5e7eb; /* gray-200 */ }
+        .project-card:hover { transform: translateY(-4px); box-shadow: 0 8px 12px -3px rgba(8, 145, 178, 0.1), 0 3px 5px -2px rgba(8, 145, 178, 0.06); }
+        /* Custom scrollbar for webkit browsers */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #f3f4f6; /* gray-100 */ }
+        ::-webkit-scrollbar-thumb { background: #9ca3af; /* gray-400 */ border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #6b7280; /* gray-500 */ }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <header class="bg-slate-800 text-white py-8 px-4 shadow-2xl">
+        <div class="container mx-auto max-w-5xl text-center">
+            <h1 class="text-4xl md:text-5xl font-bold tracking-tight">Muhammad Daffa Alwansyah</h1>
+            <p class="text-xl md:text-2xl mt-2 text-slate-300">SAP BASIS Consultant</p>
+            <div class="mt-6 flex flex-col sm:flex-row justify-center items-center space-y-3 sm:space-y-0 sm:space-x-6">
+                <a href="mailto:alwansyah.al888@gmail.com" class="flex items-center text-sm sm:text-base hover:text-cyan-400 transition-colors" title="Email">
+                    <svg class="w-5 h-5 mr-2 text-cyan-400" fill="currentColor" viewBox="0 0 20 20"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path></svg>
+                    Email
+                </a>
+                <a href="https://linkedin.com/in/daffaalwansyah" target="_blank" rel="noopener noreferrer" class="flex items-center text-sm sm:text-base hover:text-cyan-400 transition-colors" title="LinkedIn">
+                    <svg class="w-5 h-5 mr-2 text-cyan-400" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014V8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.861zM5.337 7.433a1.062 1.062 0 01-1.06-1.06A1.06 1.06 0 015.337 5.313a1.06 1.06 0 011.06 1.06c0 .584-.476 1.06-1.06 1.06zm-1.06-3.566H6.4V16.338H4.277V3.867z" clip-rule="evenodd"></path></svg>
+                    LinkedIn
+                </a>
+                 <a href="https://www.credly.com/users/daffa.alwansyah" target="_blank" rel="noopener noreferrer" class="flex items-center text-sm sm:text-base hover:text-cyan-400 transition-colors" title="Credly">
+					<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20" height="20" viewBox="0,0,256,256" class="w-5 h-5 mr-2"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><g transform="scale(5.33333,5.33333)"><path d="M42,37c0,2.76 -2.24,5 -5,5h-26c-2.76,0 -5,-2.24 -5,-5v-26c0,-2.76 2.24,-5 5,-5h26c2.76,0 5,2.24 5,5z" fill="#22d3ee"></path><path d="M33.77,27.04c-0.71,-0.5 -1.68,-0.32 -2.18,0.39c-2.14,2.96 -5.22,5.57 -9.58,5.57c-4.36,0 -4.62,-7.88 -2,-13c1.61,-3.14 3.87,-5.73 5.84,-5.72c1.39,0 2.18,1.26 1.8,2.6c-0.46,1.63 -0.51,2.72 -0.51,2.81c-0.04,0.96 0.71,1.77 1.68,1.8c0.02,0 0.04,0.01 0.07,0.01c0.93,0 1.7,-0.74 1.74,-1.68c0,-0.03 0.18,-3.31 2.78,-6.77c0.63,-0.84 0.39,-2.07 -0.57,-2.59c-0.77,-0.42 -1.75,-0.14 -2.27,0.56c-0.15,0.2 -0.29,0.39 -0.42,0.59c-0.14,0.2 -0.4,0.27 -0.62,0.17c-7.7,-3.47 -12.07,3.86 -13.51,7.23c-3,7 -3,18 5.62,18c7.22,0 10.63,-4.75 12.6,-7.79c0.46,-0.71 0.27,-1.66 -0.42,-2.14c-0.01,0 -0.02,-0.02 -0.03,-0.02z" fill="#1e293b"></path></g></g></svg>
+                    Credly
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <div class="container mx-auto max-w-5xl mt-[-28px] sm:mt-[-24px] px-2 sm:px-4 z-20 relative">
+        <div id="tabButtons" class="flex flex-col sm:flex-row sm:flex-wrap justify-center bg-white shadow-xl rounded-lg p-1.5 sm:p-2 border border-gray-200">
+            <button data-tab="profile" class="tab-button active w-full sm:w-auto flex-grow sm:flex-none text-xs sm:text-sm md:text-base px-3 py-2 sm:px-4 sm:py-2.5 m-0.5 sm:m-1 rounded-md font-semibold border">Profile & Skills</button>
+            <button data-tab="experience" class="tab-button w-full sm:w-auto flex-grow sm:flex-none text-xs sm:text-sm md:text-base px-3 py-2 sm:px-4 sm:py-2.5 m-0.5 sm:m-1 rounded-md font-semibold border">Work Experience</button>
+            <button data-tab="projects" class="tab-button w-full sm:w-auto flex-grow sm:flex-none text-xs sm:text-sm md:text-base px-3 py-2 sm:px-4 sm:py-2.5 m-0.5 sm:m-1 rounded-md font-semibold border">Key Projects</button>
+            <button data-tab="certs" class="tab-button w-full sm:w-auto flex-grow sm:flex-none text-xs sm:text-sm md:text-base px-3 py-2 sm:px-4 sm:py-2.5 m-0.5 sm:m-1 rounded-md font-semibold border">Certifications & Education</button>
+        </div>
+    </div>
+
+    <main class="container mx-auto max-w-5xl p-4 sm:p-6 lg:p-8 mt-4 sm:mt-6">
+        <div id="profile" class="tab-content active bg-white p-6 sm:p-8 rounded-lg shadow-lg">
+            <h2 class="text-2xl md:text-3xl font-bold text-cyan-700 section-title-tab">Professional Summary</h2>
+            <p id="professionalSummaryContent" class="text-base md:text-lg leading-relaxed text-gray-700 mb-8">
+                Highly motivated SAP BASIS Consultant with over 6 years of experience specializing in optimizing system performance, ensuring stability, and implementing secure configurations for diverse SAP environments. Proven track record in successfully managing the full lifecycle of SAP Basis tasks, including installations, upgrades, migrations (Greenfield & Brownfield), and ongoing maintenance. Possesses deep expertise in SAP Basis components, user management, authorization controls, system monitoring, performance tuning, and disaster recovery procedures. Adept at troubleshooting complex technical issues and collaborating effectively within project teams to deliver successful SAP deployments and transformations for enterprise level clients across diverse industries, including complex RISE with SAP initiatives.
+            </p>
+
+            <h3 class="text-xl font-semibold text-cyan-600 mb-3">Key Skills:</h3>
+            <div class="flex flex-wrap gap-2 mb-8">
+                <span class="bg-cyan-50 text-cyan-800 px-3 py-1.5 rounded-full text-xs sm:text-sm shadow-sm font-medium">SAP BASIS</span>
+                <span class="bg-cyan-50 text-cyan-800 px-3 py-1.5 rounded-full text-xs sm:text-sm shadow-sm font-medium">SAP S/4HANA</span>
+				<span class="bg-cyan-50 text-cyan-800 px-3 py-1.5 rounded-full text-xs sm:text-sm shadow-sm font-medium">SAP HANA Database</span>
+				<span class="bg-cyan-50 text-cyan-800 px-3 py-1.5 rounded-full text-xs sm:text-sm shadow-sm font-medium">SAP BTP</span>
+				<span class="bg-cyan-50 text-cyan-800 px-3 py-1.5 rounded-full text-xs sm:text-sm shadow-sm font-medium">SAP FIORI</span>
+                <span class="bg-cyan-50 text-cyan-800 px-3 py-1.5 rounded-full text-xs sm:text-sm shadow-sm font-medium">SAP Private & Public Cloud</span>
+                <span class="bg-cyan-50 text-cyan-800 px-3 py-1.5 rounded-full text-xs sm:text-sm shadow-sm font-medium">SAP Cloud Architecture</span>
+                <span class="bg-cyan-50 text-cyan-800 px-3 py-1.5 rounded-full text-xs sm:text-sm shadow-sm font-medium">SAP System Migration & Conversion</span>
+                <span class="bg-cyan-50 text-cyan-800 px-3 py-1.5 rounded-full text-xs sm:text-sm shadow-sm font-medium">SAP Performance Tuning</span>
+                <span class="bg-cyan-50 text-cyan-800 px-3 py-1.5 rounded-full text-xs sm:text-sm shadow-sm font-medium">DRP/DRC Implementation</span>
+            </div>
+
+            <h3 class="text-xl md:text-2xl font-semibold text-cyan-600 mb-4 text-center">Core Skills Distribution</h3>
+            <p class="text-center text-gray-600 mb-6">This visualization illustrates the primary focus areas of my expertise, based on accumulated experience.</p>
+            <div id="skillsDistributionChartContainer" class="chart-container bg-gray-50 p-4 rounded-lg shadow-md border border-gray-200">
+                <canvas id="skillsDistributionChart"></canvas>
+            </div>
+        </div>
+
+        <div id="experience" class="tab-content bg-white p-6 sm:p-8 rounded-lg shadow-lg">
+            <h2 class="text-2xl md:text-3xl font-bold text-cyan-700 section-title-tab">Work Experience</h2>
+            <p class="mb-8 text-gray-700">The following timeline highlights my career progression, detailing key roles and responsibilities that have shaped my expertise in SAP consulting and cloud architecture.</p>
+            <div id="workHistoryContainer" class="space-y-10 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-gray-300 before:to-transparent">
+            </div>
+        </div>
+
+        <div id="projects" class="tab-content bg-white p-6 sm:p-8 rounded-lg shadow-lg">
+            <h2 class="text-2xl md:text-3xl font-bold text-cyan-700 section-title-tab">Key SAP Projects</h2>
+            <p class="mb-8 text-gray-700">Explore a selection of significant SAP projects I have led and contributed to. Use the filters below to narrow down projects by type or your specific role.</p>
+            <div class="mb-8 grid grid-cols-1 sm:grid-cols-2 gap-6 bg-gray-50 p-6 rounded-lg shadow-md border border-gray-200">
+                <div>
+                    <label for="projectTypeFilter" class="block text-sm font-medium text-gray-700 mb-1">Filter by Project Type:</label>
+                    <select id="projectTypeFilter" class="w-full p-2.5 border border-gray-300 rounded-md shadow-sm focus:ring-cyan-500 focus:border-cyan-500 text-sm">
+                    </select>
+                </div>
+                <div>
+                    <label for="projectRoleFilter" class="block text-sm font-medium text-gray-700 mb-1">Filter by Project Role:</label>
+                    <select id="projectRoleFilter" class="w-full p-2.5 border border-gray-300 rounded-md shadow-sm focus:ring-cyan-500 focus:border-cyan-500 text-sm">
+                    </select>
+                </div>
+            </div>
+            <div id="projectGrid" class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-8">
+            </div>
+             <div class="mt-12">
+                <h3 class="text-xl md:text-2xl font-semibold text-cyan-600 mb-4 text-center">Project Type Overview</h3>
+                <p class="text-center text-gray-600 mb-6">This chart illustrates the variety of project types handled, showcasing the breadth of my SAP implementation experience.</p>
+                <div id="projectTypesChartContainer" class="chart-container bg-gray-50 p-4 rounded-lg shadow-md border border-gray-200">
+                    <canvas id="projectTypesChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div id="certs" class="tab-content bg-white p-6 sm:p-8 rounded-lg shadow-lg">
+            <h2 class="text-2xl md:text-3xl font-bold text-cyan-700 section-title-tab">Certifications & Education</h2>
+            <p class="mb-8 text-gray-700">My commitment to continuous professional development is reflected in relevant industry certifications and a strong academic foundation.</p>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-xl font-semibold text-cyan-600 mb-4">Professional Certifications</h3>
+                    <ul id="certificationList" class="space-y-4">
+                        </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold text-cyan-600 mb-4">Education</h3>
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-md border border-gray-200">
+                        <h4 class="text-lg font-bold text-cyan-800">Bachelor of Science in Informatics</h4>
+                        <p class="text-gray-700">Universitas Nasional, Jakarta, Indonesia</p>
+                        <p class="text-sm text-gray-500">September 2020 – March 2024</p>
+                        <p class="mt-2"><span class="font-semibold text-amber-500">Cum Laude</span> | GPA: 3.93 / 4.00</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-slate-900 text-slate-400 text-center p-8 mt-12">
+        <p>&copy; <span id="currentYear"></span> Muhammad Daffa Alwansyah.</p>
+        <p class="text-sm mt-1">
+            The content and design of this page are licensed under the
+            <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener noreferrer" class="hover:text-cyan-400 underline">Creative Commons Attribution-NonCommercial 4.0 International License</a>.
+        </p>
+        <p class="text-sm mt-1">Designed for enhanced exploration.</p>
+    </footer>
+
+    <script>
+        const cvData = {
+            professionalSummary: "Highly motivated SAP BASIS Consultant with over 6 years of experience specializing in optimizing system performance, ensuring stability, and implementing secure configurations for diverse SAP environments. Proven track record in successfully managing the full lifecycle of SAP Basis tasks, including installations, upgrades, migrations (Greenfield & Brownfield), and ongoing maintenance. Possesses deep expertise in SAP Basis components, user management, authorization controls, system monitoring, performance tuning, and disaster recovery procedures. Adept at troubleshooting complex technical issues and collaborating effectively within project teams to deliver successful SAP deployments and transformations for enterprise level clients across diverse industries, including complex RISE with SAP initiatives.",
+            workHistory: [
+                { company: "PT. IBM Delivery Indonesia - Jakarta", role: "SAP BASIS Consultant", dates: "05/2025 – Present", description: ["Continuing key responsibilities and project engagements as an SAP BASIS Consultant following the acquisition of PT Equine Global by IBM."] },
+                { company: "PT. Equine Global - Jakarta", role: "SAP Partner Cloud Architect (PCA)", dates: "11/2022 – 04/2025 (Concurrent Role)", description: ["Architected comprehensive cloud, network, and SAP integration solutions for multiple RISE with SAP implementations.", "Defined optimal cloud environments (Private and Public Cloud editions), ensuring security, scalability, and seamless integration with existing SAP landscapes and BTP services.", "Collaborated with clients and technical teams to translate business requirements into robust and future-proof SAP cloud architectures."] },
+                { company: "PT. Equine Global - Jakarta", role: "SAP BASIS Consultant", dates: "10/2021 – 04/2025", description: ["Led SAP Basis teams in both greenfield and brownfield projects, overseeing system design, implementation, migration, and conversion processes.", "Established and enforced SAP Basis standards, requirements, and best practices.", "Evaluated, directed, and implemented enhancements for optimal performance monitoring and robust system configuration.", "Provided expert technical support and troubleshooting for complex SAP Basis system issues."] },
+                { company: "PT. Sinergi Informatika Semen Indonesia - Jakarta", role: "SAP BASIS Administrator", dates: "06/2019 – 09/2021", description: ["Managed SAP system installations, upgrades, and performed ongoing maintenance to ensure high availability and system integrity.", "Monitored system performance proactively, identifying and implementing optimization measures to enhance efficiency.", "Administered user access, implemented security protocols, and managed regular data backups and recovery plans.", "Provided critical troubleshooting and support, maintaining a stable and reliable SAP environment for business operations."] },
+                { company: "PT. Sinergi Informatika Semen Indonesia - Jakarta", role: "Full-stack Web Developer", dates: "03/2019 – 07/2019", description: ["Designed and developed user-facing front-end and back-end web components using HTML, CSS, PHP, and JavaScript frameworks."] }
+            ],
+            projects: [
+                 { client: "PT Eka Bogainti (Hoka-Hoka Bento)", dates: "03/2024 – 03/2025", type: "RISE With SAP Private Cloud Implementation", s4Version: "S/4HANA 2023", role: "SAP Partner Cloud Architect (PCA) & SAP BASIS Consultant Lead", responsibilities: "Leading the BASIS team in the implementation of RISE with SAP S/4HANA Private Cloud, including Embedded SAP Fiori and integration with SAP BTP Integration Suites. Architecting the cloud solution, and ensuring seamless technical delivery." },
+                { client: "PT Bandara Internasional Batam", dates: "02/2024 – 11/2024", type: "GROW With SAP Public Cloud Implementation", s4Version: "SAP S/4HANA CLOUD 2402", role: "SAP BASIS Consultant Lead", responsibilities: "Leading the BASIS team in the implementation of SAP S/4HANA Public Cloud, encompassing provisioning of SAP CBC, SAP ALM, and SAP S/4HANA Cloud environments." },
+                { client: "PT Kereta Cepat Indonesia China", dates: "03/2024 – 08/2024", type: "RISE With SAP Private Cloud Implementation", s4Version: "S/4HANA 2023 FPS 01", role: "SAP Partner Cloud Architect (PCA)", responsibilities: "Architected the RISE with SAP S/4HANA Private Cloud environment, focusing on secure and scalable infrastructure design and integration strategy." },
+                { client: "PT Jumbo Power International", dates: "03/2024 – 12/2024", type: "RISE With SAP Private Cloud Implementation", s4Version: "S/4HANA 2023", role: "SAP Partner Cloud Architect (PCA)", responsibilities: "Architected the RISE with SAP S/4HANA Private Cloud environment, focusing on secure and scalable infrastructure design and integration strategy." },
+                { client: "PT Asuransi Tugu Pratama Indonesia Tbk", dates: "11/2022 – 03/2024", type: "RISE With SAP Private Cloud Implementation", s4Version: "S/4HANA 2022 FPS 01", role: "SAP Partner Cloud Architect (PCA) & SAP BASIS Consultant Lead", responsibilities: "Led the BASIS team and architected the solution for the RISE with SAP S/4HANA Private Cloud implementation, including Embedded SAP Fiori and integration with SAP BTP Integration Suites." },
+                { client: "PT Asia Pacific Fibers Tbk", dates: "02/2023 – 02/2023", type: "SAP BASIS Training", s4Version: "-", role: "SAP BASIS Consultant as Trainer", responsibilities: "Delivered comprehensive SAP BASIS training to client personnel." },
+                { client: "PT Jasa Marga Tbk", dates: "01/2023 – 01/2025", type: "SAP Managed Services", s4Version: "-", role: "SAP BASIS Consultant", responsibilities: "Delivering ongoing SAP Basis administration and support." },
+                { client: "PT Cikarang Listrindo Tbk", dates: "01/2023 – 01/2025", type: "SAP Managed Services", s4Version: "-", role: "SAP BASIS Consultant", responsibilities: "Delivering ongoing SAP Basis administration and support." },
+                { client: "PT FKS Pangan Nusantara", dates: "12/2022 – 12/2024", type: "SAP Managed Services", s4Version: "-", role: "SAP BASIS Consultant", responsibilities: "Delivering ongoing SAP Basis administration and support." },
+                { client: "PT Surya Citra Media Tbk", dates: "09/2022 – 03/2023", type: "SAP Greenfield Implementation", s4Version: "S/4HANA 2021 FPS 02", role: "SAP BASIS Consultant Lead", responsibilities: "Led the BASIS team in the greenfield implementation of SAP S/4HANA On-premise with Embedded SAP Fiori." },
+                { client: "PT Paradise Perkasa", dates: "01/2022 – 09/2022", type: "SAP Brownfield Migration and Conversion", s4Version: "ECC 6.0 EHP 7 to S/4HANA 2020 SPS 03", role: "SAP BASIS Consultant Lead", responsibilities: "Spearheaded the BASIS team efforts for the migration and conversion project from SAP ECC6 to SAP S/4HANA On-premise, including Fiori setup." },
+                { client: "PT Mineral Industri Indonesia (Persero) MIND ID", dates: "12/2021 – 12/2022", type: "DRP & DRC Implementation", s4Version: "S/4HANA", role: "SAP BASIS Consultant Lead", responsibilities: "Led the design and implementation of Disaster Recovery Planning (DRP) and Disaster Recovery Center (DRC) for S/4HANA environment." },
+                { client: "PT TASPEN (Persero)", dates: "01/2022 – 01/2025", type: "SAP Managed Services", s4Version: "-", role: "SAP BASIS Consultant", responsibilities: "Providing comprehensive SAP Basis support and maintenance services." },
+                { client: "Perum LPPNPI (AirNav Indonesia)", dates: "10/2021 – 10/2025", type: "SAP Managed Services", s4Version: "-", role: "SAP BASIS Consultant", responsibilities: "Ensuring the smooth operation of SAP systems through dedicated managed services." },
+                { client: "PT Angkasa Pura II (Persero)", dates: "01/2024 – 12/2025", type: "SAP Managed Services", s4Version: "-", role: "SAP BASIS Consultant", responsibilities: "Delivering ongoing SAP Basis administration and support." },
+                { client: "PT Angkasa Pura I (Persero)", dates: "10/2021 – 10/2022", type: "SAP Managed Services", s4Version: "-", role: "SAP BASIS Consultant", responsibilities: "Delivering ongoing SAP Basis administration and support." },
+                { client: "PT Semen Indonesia Tbk", dates: "06/2021 – 07/2021", type: "SAP Migration", s4Version: "SAP ECC 6.0", role: "SAP BASIS Administrator", responsibilities: "Supported the SAP Basis activities for the migration of SAP ECC 6.0 project." },
+                { client: "PT Semen Indonesia Tbk", dates: "10/2019 – 04/2020", type: "SAP Integrated Business Planning Implementation", s4Version: "SAP IBP", role: "SAP BASIS Administrator", responsibilities: "Supported the SAP Basis activities for the SAP IBP implementation." },
+                { client: "PT Semen Indonesia Tbk", dates: "10/2019 – 09/2021", type: "SAP Managed Services", s4Version: "-", role: "SAP BASIS Administrator", responsibilities: "Provided ongoing SAP Basis administration and support for multiple systems." },
+                { client: "PT Solusi Bangun Indonesia Tbk", dates: "10/2019 – 09/2021", type: "SAP Managed Services", s4Version: "-", role: "SAP BASIS Administrator", responsibilities: "Provided ongoing SAP Basis administration and support for multiple systems." },
+                { client: "PT Solusi Bangun Indonesia Tbk", dates: "07/2019 – 10/2019", type: "SAP Migration", s4Version: "SAP ECC 6.0", role: "SAP BASIS Administrator", responsibilities: "Supported the SAP Basis activities for the migration of SAP ECC 6.0 project." }
+            ],
+            certifications: [
+                { name: "SAP Certified Specialist - SAP S/4HANA Conversion and SAP System Upgrade", date: "03/2025", issuer: "SAP", url: "https://www.credly.com/badges/7efbff7e-8495-4914-8dd3-bf0accc0ffa0" },
+                { name: "SAP Certified Associate - Database Administrator - SAP HANA", date: "03/2025", issuer: "SAP", url: "https://www.credly.com/badges/97220a27-395b-4e65-8f1b-ecd7bdaf53e0" },
+                { name: "SAP Certified Associate - Implementation Consultant - SAP S/4HANA Cloud Public Edition", date: "03/2025", issuer: "SAP", url: "https://www.credly.com/badges/a802807a-ab1d-4358-96ac-73733338387c" },
+                { name: "SAP Certified Associate - SAP S/4HANA System Administration", date: "09/2024", issuer: "SAP", url: "https://www.credly.com/badges/9a68dbb7-a87d-41f1-a2af-7dbccea78399" },
+                { name: "SAP Certified Associate - SAP Fiori System Administration", date: "09/2024", issuer: "SAP", url: "https://www.credly.com/badges/f86eaeed-40d0-4091-bd56-0b97769a0854" },
+                { name: "Indonesia Professional Certification Agency - Junior Network Administrator", date: "12/2023", issuer: "BNSP" },
+                { name: "Advisory Skills - RISE with SAP S/4HANA Cloud Private Edition - Cloud Architecture", date: "06/2023", issuer: "SAP", url: "https://www.credly.com/badges/22fef7dd-c8f8-488b-9fac-234f51eaa565" },
+                { name: "SAP Certified Technology Specialist - SAP S/4HANA Conversion and SAP System Upgrade 2022", date: "05/2023", issuer: "SAP" },
+                { name: "SAP Certified Application Associate - SAP S/4HANA Cloud (public) Implementation with SAP Activate", date: "10/2022", issuer: "SAP" },
+                { name: "SAP Certified Technology Associate - SAP HANA 2.0 SPS05", date: "10/2022", issuer: "SAP" },
+                { name: "HCIA - Cloud Service", date: "11/2021", issuer: "Huawei" }
+            ],
+            skillsDistribution: {
+                labels: ["SAP Basis & Core Systems", "SAP Cloud Architecture & Integration", "Project Leadership & Consulting", "SAP HANA & Fiori Administration", "SAP Legacy Environment (ECC6,Sybase,Oracle,etc)", "Web Development"],
+                data: [30, 25, 8, 25, 10, 2], // Percentages
+                colors: ['#06b6d4', '#0891b2', '#0e7490', '#155e75', '#164e63', '#0284c7']
+            }
+        };
+
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeTabs();
+            populateWorkHistory();
+            initializeProjectFilters();
+            renderProjects(cvData.projects); 
+            renderProjectTypesChart(cvData.projects); 
+            renderSkillsDistributionChart();
+            populateCertifications();
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+        });
+
+        function initializeTabs() {
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const targetTab = button.dataset.tab;
+
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+
+                    tabContents.forEach(content => {
+                        content.classList.remove('active');
+                        if (content.id === targetTab) {
+                            content.classList.add('active');
+                        }
+                    });
+                });
+            });
+        }
+
+        function populateWorkHistory() {
+            const container = document.getElementById('workHistoryContainer');
+            container.innerHTML = ''; 
+            cvData.workHistory.forEach((item, index) => {
+                const alignmentClass = index % 2 === 0 ? 'md:mr-auto' : 'md:ml-auto';
+                const descriptionHTML = item.description.map(d => `<li class="text-gray-600 text-sm">${d}</li>`).join('');
+                const html = `
+                    <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                        <div class="flex items-center justify-center w-10 h-10 rounded-full border-2 border-white bg-cyan-600 text-white shadow-md shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
+                            <span class="text-lg font-semibold">${cvData.workHistory.length - index}</span>
+                        </div>
+                        <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-4 rounded-lg border border-gray-200 shadow-lg ${alignmentClass}">
+                            <div class="flex flex-col sm:flex-row items-start justify-between sm:space-x-2 mb-1">
+                                <h3 class="font-bold text-cyan-700 text-base sm:text-lg mb-1 sm:mb-0">${item.role}</h3>
+                                <time class="font-medium text-amber-500 text-xs sm:text-sm whitespace-normal break-words">${item.dates}</time> 
+                            </div>
+                            <p class="text-sm sm:text-base font-semibold text-gray-600 mb-2">${item.company}</p>
+                            <ul class="list-disc list-inside space-y-1">${descriptionHTML}</ul>
+                        </div>
+                    </div>
+                `;
+                container.innerHTML += html;
+            });
+        }
+        
+        function initializeProjectFilters() {
+            const typeFilterSelect = document.getElementById('projectTypeFilter');
+            const roleFilterSelect = document.getElementById('projectRoleFilter');
+
+            const uniqueTypes = ['All Project Types', ...new Set(cvData.projects.map(p => p.type))];
+            uniqueTypes.forEach(type => {
+                const option = document.createElement('option');
+                option.value = type === 'All Project Types' ? 'all' : type;
+                option.textContent = type;
+                typeFilterSelect.appendChild(option);
+            });
+
+            const uniqueRoles = ['All Project Roles', ...new Set(cvData.projects.map(p => p.role))];
+            uniqueRoles.forEach(role => {
+                const option = document.createElement('option');
+                option.value = role === 'All Project Roles' ? 'all' : role;
+                option.textContent = role;
+                roleFilterSelect.appendChild(option);
+            });
+
+            typeFilterSelect.addEventListener('change', filterProjects);
+            roleFilterSelect.addEventListener('change', filterProjects);
+        }
+
+        function filterProjects() {
+            const selectedType = document.getElementById('projectTypeFilter').value;
+            const selectedRole = document.getElementById('projectRoleFilter').value;
+
+            const filteredProjects = cvData.projects.filter(project => {
+                const typeMatch = selectedType === 'all' || project.type === selectedType;
+                const roleMatch = selectedRole === 'all' || project.role === selectedRole;
+                return typeMatch && roleMatch;
+            });
+            renderProjects(filteredProjects);
+        }
+
+        function renderProjects(projectsToRender) {
+            const grid = document.getElementById('projectGrid');
+            grid.innerHTML = '';
+            if (projectsToRender.length === 0) {
+                grid.innerHTML = `<p class="md:col-span-2 text-center text-gray-500 py-8">No projects match the selected filters.</p>`;
+                return;
+            }
+            projectsToRender.forEach(project => {
+                const s4VersionDisplay = project.s4Version && project.s4Version !== '-' ? ` (${project.s4Version})` : '';
+                const card = `
+                    <div class="project-card bg-white p-5 rounded-lg shadow-md flex flex-col justify-between">
+                        <div>
+                            <h4 class="text-base sm:text-lg font-bold text-cyan-700">${project.client}</h4>
+                            <p class="text-xs text-amber-500 font-medium mb-1.5">${project.dates}</p>
+                            <p class="text-xs sm:text-sm text-gray-600 mb-1"><span class="font-semibold">Type:</span> ${project.type}${s4VersionDisplay}</p>
+                            <p class="text-xs sm:text-sm text-gray-600 mb-2"><span class="font-semibold">Role:</span> ${project.role}</p>
+                            <p class="text-xs sm:text-sm text-gray-700 leading-relaxed mb-3">${project.responsibilities}</p>
+                        </div>
+                    </div>
+                `;
+                grid.innerHTML += card;
+            });
+        }
+        
+        let projectTypesChartInstance = null;
+        function renderProjectTypesChart(projectsForChart) {
+            const canvas = document.getElementById('projectTypesChart');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            const projectCounts = {};
+            projectsForChart.forEach(p => { projectCounts[p.type] = (projectCounts[p.type] || 0) + 1; });
+
+            if (projectTypesChartInstance) projectTypesChartInstance.destroy();
+
+            projectTypesChartInstance = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: Object.keys(projectCounts),
+                    datasets: [{
+                        label: 'Number of Projects',
+                        data: Object.values(projectCounts),
+                        backgroundColor: 'rgba(8, 145, 178, 0.6)', 
+                        borderColor: '#0e7490', 
+                        borderWidth: 1,
+                        borderRadius: 4,
+                    }]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    scales: {
+                        y: { beginAtZero: true, ticks: { stepSize: 1, color: '#4b5563' }, grid: { color: '#e5e7eb' } },
+                        x: { ticks: { color: '#4b5563', font: {size: 9} }, grid: { display: false } }
+                    },
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            backgroundColor: '#1f2937', titleColor: '#f9fafb', bodyColor: '#e5e7eb', 
+                            callbacks: { label: function(context) { return ` ${context.dataset.label}: ${context.parsed.y}`; } }
+                        }
+                    },
+                    animation: { duration: 800, easing: 'easeOutQuart' }
+                }
+            });
+        }
+        
+        let skillsChartInstance = null;
+        function renderSkillsDistributionChart() {
+            const canvas = document.getElementById('skillsDistributionChart');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            if (skillsChartInstance) skillsChartInstance.destroy();
+            skillsChartInstance = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: cvData.skillsDistribution.labels,
+                    datasets: [{
+                        label: 'Skills Distribution',
+                        data: cvData.skillsDistribution.data,
+                        backgroundColor: cvData.skillsDistribution.colors,
+                        borderColor: '#ffffff', 
+                        borderWidth: 2.5,
+                        hoverOffset: 10,
+                        hoverBorderColor: '#f3f4f6'
+                    }]
+                },
+                options: {
+                    responsive: true, maintainAspectRatio: false,
+                    plugins: {
+                        legend: { 
+                            position: 'bottom', 
+                            labels: { 
+                                padding: 12, 
+                                font: {size: 9.5}, 
+                                color: '#4b5563',
+                                boxWidth: 12,
+                                usePointStyle: true,
+                            } 
+                        },
+                        tooltip: {
+                            backgroundColor: '#1f2937', titleColor: '#f9fafb', bodyColor: '#e5e7eb',
+                            callbacks: {
+                                label: function(context) {
+                                    let label = context.label || '';
+                                    if (label) label += ': ';
+                                    if (context.parsed !== null) label += context.parsed + '%';
+                                    return label;
+                                }
+                            }
+                        }
+                    },
+                    animation: { animateRotate: true, animateScale: true, duration: 1000, easing: 'easeOutCirc' }
+                }
+            });
+        }
+
+        function populateCertifications() {
+            const list = document.getElementById('certificationList');
+            list.innerHTML = '';
+            cvData.certifications.forEach(cert => {
+                let certNameHtml = cert.name;
+                if (cert.url) {
+                    certNameHtml = `<a href="${cert.url}" target="_blank" rel="noopener noreferrer" class="hover:text-cyan-500 hover:underline">${cert.name}</a>`;
+                }
+
+                const item = `
+                    <li class="bg-gray-50 p-4 rounded-md shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-200">
+                        <h4 class="font-semibold text-cyan-700 text-sm sm:text-base">${certNameHtml}</h4>
+                        <p class="text-xs sm:text-sm text-gray-600">Issued by: ${cert.issuer} | Date: ${cert.date}</p>
+                    </li>
+                `;
+                list.innerHTML += item;
+            });
+        }
+    </script>
+</body>
+</html>
